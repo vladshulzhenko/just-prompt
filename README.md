@@ -5,7 +5,7 @@ Composable prompt DSL for AI agents.
 ## Install
 
 ```bash
-npm install prompt-forge-ts
+npm install prompt-forge
 ```
 
 ## Usage
