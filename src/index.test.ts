@@ -123,9 +123,16 @@ describe("just-prompt", () => {
 
     const prompt = Prompt([
       System("You are a support assistant."),
-      Template`Handle topic: ${topic}. ${Bracket("Return JSON only", "(", ")")}`,
+      Template`Handle topic: ${topic}. ${Bracket(
+        "Return JSON only",
+        "(",
+        ")",
+      )}`,
       "Rules:",
-      Join(Each(rules, (rule) => `- ${rule}`), "\n"),
+      Join(
+        Each(rules, (rule) => `- ${rule}`),
+        "\n",
+      ),
     ]);
 
     expect(prompt.toMessages()).toEqual([

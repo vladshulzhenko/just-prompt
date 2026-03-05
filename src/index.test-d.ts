@@ -24,7 +24,10 @@ const p = Prompt([
   Role("assistant", "Synthesizing response."),
   If(user.isPremium, "Please give detailed answers.", "Give short answers."),
   "Here are the tasks:",
-  Join(Each(tasks, (t) => `- ${t}`), "\n"),
+  Join(
+    Each(tasks, (t) => `- ${t}`),
+    "\n",
+  ),
   Template`Task count: ${tasks.length}`,
   Bracket("JSON mode", "(", ")"),
 ]);

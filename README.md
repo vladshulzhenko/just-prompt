@@ -35,7 +35,7 @@ const messages = p.toMessages();
 - `If(condition, whenTrue, whenFalse?)`: conditionally includes content.
 - `Each(items, mapper)`: transforms arrays/iterables into prompt parts.
 - `Join(items, separator?)`: joins iterable content into one composed segment.
-- ``Template`...${value}...` ``: tagged template helper for inline composition.
+- `` Template`...${value}...`  ``: tagged template helper for inline composition.
 - `Bracket(content, left?, right?)`: wraps content with markers like `()`, `[]`, or custom tokens.
 - `Prompt([...])`: composes all parts into one renderable prompt object.
 
@@ -95,7 +95,7 @@ Here are the tasks:
 - `If(condition, whenTrue, whenFalse?)` -> conditional branch in prompt tree
 - `Each(items, mapper)` -> map iterable items into prompt parts
 - `Join(items, separator?)` -> join mapped parts into a single segment
-- ``Template`...${value}...` `` -> inline template interpolation helper
+- `` Template`...${value}...`  `` -> inline template interpolation helper
 - `Bracket(content, left?, right?)` -> wraps prompt content with brackets/tokens
 
 ### `render(options)`
@@ -143,7 +143,10 @@ import { Each, Join, Prompt } from "prompt-weave";
 const checklist = ["Collect requirements", "Draft response", "Validate format"];
 const prompt = Prompt([
   "Follow this checklist:",
-  Join(Each(checklist, (item, i) => `${i + 1}. ${item}`), "\n"),
+  Join(
+    Each(checklist, (item, i) => `${i + 1}. ${item}`),
+    "\n",
+  ),
 ]);
 ```
 
@@ -175,6 +178,10 @@ import { If, Prompt, System } from "prompt-weave";
 const isPremium = false;
 const prompt = Prompt([
   System("You are a documentation assistant."),
-  If(isPremium, "Provide deep implementation details.", "Provide a concise summary."),
+  If(
+    isPremium,
+    "Provide deep implementation details.",
+    "Provide a concise summary.",
+  ),
 ]);
 ```
